@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { useEffect, useState } from "react";
 import ProductCard from "./Components/ProductCard";
 import useFetch from "./Components/useFetch";
@@ -45,22 +47,24 @@ function App() {
       {/* {console.log(products)} */}
 
       <h2>All Products</h2>
-      {products.map((product) => {
-        return (
-          <ProductCard
-            key={product.id}
-            title={product.title}
-            image={product.image}
-            description={product.description}
-            price={product.price}
-            isFavourite={favourite.some((fav) => fav.title === product.title)}
-            onHandleFavourite={handleFavourite}
-          />
-        );
-      })}
+      <div className="card-grid">
+        {products.map((product) => {
+          return (
+            <ProductCard
+              key={product.id}
+              title={product.title}
+              image={product.image}
+              description={product.description}
+              price={product.price}
+              isFavourite={favourite.some((fav) => fav.title === product.title)}
+              onHandleFavourite={handleFavourite}
+            />
+          );
+        })}
+      </div>
 
       <h2>My favourites</h2>
-      <div>
+      <div className="card-grid">
         {favourite.length > 0 ? (
           favourite.map((favourite) => (
             <ProductCard

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./product.css";
 
 const ProductCard = ({
-  key,
+  id,
   title,
   image,
   description,
@@ -15,7 +15,7 @@ const ProductCard = ({
   const handleFavourite = () => {
     const newFavState = !isFav;
     setIsFav(newFavState);
-    onHandleFavourite(key, title, image, description, price, newFavState);
+    onHandleFavourite(id, title, image, description, price, newFavState);
   };
 
   useEffect(() => {
@@ -23,20 +23,18 @@ const ProductCard = ({
   }, [isFavourite]);
 
   return (
-    <div className="container">
-      <div className="card">
-        <img src={image} alt={title} className="card-image" />
-        <h1>{title}</h1>
-        <p className="price">{price}</p>
-        <p>{description}</p>
-        <p>
-          <button
-            onClick={handleFavourite}
-            style={{ background: isFav ? "red" : "black" }}>
-            {isFav ? "Remove from Favourite" : "Add to Favourite"}
-          </button>
-        </p>
-      </div>
+    <div className="card">
+      <img src={image} alt={title} className="card-image" />
+      <h1>{title}</h1>
+      <p id="price">${price}</p>
+      <p>{description}</p>
+      <p>
+        <button
+          onClick={handleFavourite}
+          style={{ background: isFav ? "red" : "black" }}>
+          {isFav ? "Remove from Favourite" : "Add to Favourite"}
+        </button>
+      </p>
     </div>
   );
 };
